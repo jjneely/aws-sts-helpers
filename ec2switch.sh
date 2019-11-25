@@ -206,7 +206,7 @@ function ec2mfa()
 	    fi
 	    read -e -p "Enter token for user ${iamuser}: " token
 	    # Create credentials good for two hours (7200 minutes)
-	    generate-sts-mfa-token --account ${MY_AWS_SET_FOR} --user=${iamuser} --token=${token} --duration 14400 --cachefiles
+	    generate-sts-mfa-token --account ${MY_AWS_SET_FOR} --user=${iamuser} --token=${token} --duration 14400 --cachefiles --config ${HOME}/aws-creds/accounts.json
 	    if [ $? -ne 0 ]; then
 		echo "Failed to set MFA token"
 	    else
